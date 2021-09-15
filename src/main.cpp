@@ -1,26 +1,28 @@
 /*
 ** EPITECH PROJECT, 2021
-** Autocompletion
+** autocomp
 ** File description:
 ** main
 */
 
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <cstring>
-#include "../includes/autocompletion.hpp"
+#include "autocomp.hpp"
 
-int main(int ac, char **argv)
+int main(int ac, char **av)
 {
-    int exitstatus = 0;
-    std::vector<std::string> cities;
-    std::vector<std::string> streetnames;
-    std::vector<int> streetnumber;
+    int exit_status = 0;
+    adr *oto = 0;
 
-    if (strcmp(argv[1], "-h") == 0)
-        exitstatus = helpmsg();
-    else
-        exitstatus = parsefile(argv[1], &cities, &streetnames);
-    return exitstatus;
+    if (ac == 2 && strcmp(av[1], "-h") == 0) {
+        std::cout << "USAGE\n\t./autoCompletion dictionary\n\nDESCRIPTION\n"
+            "\tdictionary\tfile containing one address per line, as knowledge base" << std::endl;
+        return 0;
+    }
+    if (ac == 2)
+        exit_status = oto->parse_address(av[1]);
+    else {
+        std::cout << "Invalid argument" << std::endl;
+        return 84;
+    }
+    return exit_status;
 }
